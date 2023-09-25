@@ -1,0 +1,400 @@
+<main id="main" class="my-5">
+  <section class="inner-page">
+    <div class="container">
+      <h2 class="d-flex justify-content-center align-items-center">Applicant Details</h2>
+      <div class="row">
+        <div class="col-12">
+          <form [formGroup]="passportForm" (ngSubmit)="submitForm()">
+            <table class="table">
+              <tr>
+                <td>
+                  <label for="givenName" class="form-label fw-bold">2.1 Applicant's Given Name (Given Name means First name followed by Middle name (If any))(Initials not allowed)<span class="required text-danger">*</span></label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="text" id="givenName" formControlName="givenName" class="form-control" required>
+                  <div *ngIf="passportForm.get('givenName')?.errors && (passportForm.get('givenName')?.dirty || passportForm.get('givenName')?.touched)" >
+                    <div *ngIf="passportForm.get('givenName')?.errors?.['required']" style="color: brown;">Given Name is required.</div>
+                    <div *ngIf="passportForm.get('givenName')?.errors?.['pattern']" style="color: brown;">Given Name should contain only characters.</div>
+                  </div>
+                </td>
+              </tr>
+              <!-- Remaining fields with validation messages -->
+              <tr>
+                <td>
+                  <label for="surname" class="form-label fw-bold">2.2 Surname (In full)<span class="required">*</span></label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="text" id="surname" formControlName="surname" class="form-control" required>
+                  <div *ngIf="passportForm.get('surname')?.errors && (passportForm.get('surname')?.dirty || passportForm.get('surname')?.touched)" >
+                    <div *ngIf="passportForm.get('surname')?.errors?.['required']" style="color: brown;">Surname is required.</div>
+                    <div *ngIf="passportForm.get('surname')?.errors?.['pattern']" style="color: brown;">Surname should contain only characters.</div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="dateOfBirth" class="form-label fw-bold">2.3 Date of Birth (DD-MM-YYYY)<span class="required">*</span></label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="text" id="dateOfBirth" formControlName="dateOfBirth" class="form-control" required>
+                  <div *ngIf="passportForm.get('dateOfBirth')?.errors && (passportForm.get('dateOfBirth')?.dirty || passportForm.get('dateOfBirth')?.touched)">
+                    <div *ngIf="passportForm.get('dateOfBirth')?.errors?.['required']" style="color: brown;">Date of Birth is required.</div>
+                  </div>
+                </td>
+              </tr>
+  
+<tr>
+  <td>
+    <label for="district" class="form-label fw-bold">2.5 District<span class="required">*</span></label>
+  </td>
+</tr>
+<tr>
+  <td>
+    <input type="text" id="district" formControlName="district" class="form-control" required>
+    <div *ngIf="passportForm.get('district')?.errors && (passportForm.get('district')?.dirty || passportForm.get('district')?.touched)">
+      <div *ngIf="passportForm.get('district')?.errors?.['required']" style="color: brown;" >District is required.</div>
+      <div *ngIf="passportForm.get('district')?.errors?.['pattern']" style="color: brown;">District should contain only characters.</div>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <label for="state" class="form-label fw-bold">2.6 State<span class="required">*</span></label>
+  </td>
+</tr>
+<tr>
+  <td>
+    <input type="text" id="state" formControlName="state" class="form-control" required>
+    <div *ngIf="passportForm.get('state')?.errors && (passportForm.get('state')?.dirty || passportForm.get('state')?.touched)">
+      <div *ngIf="passportForm.get('state')?.errors?.['required']" style="color: brown;">State is required.</div>
+      <div *ngIf="passportForm.get('state')?.errors?.['pattern']" style="color: brown;">State should contain only characters.</div>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <label for="regionCountry" class="form-label fw-bold">2.7 Region/Country<span class="required">*</span></label>
+  </td>
+</tr>
+<tr>
+  <td>
+    <input type="text" id="regionCountry" formControlName="regionCountry" class="form-control" required>
+    <div *ngIf="passportForm.get('regionCountry')?.errors && (passportForm.get('regionCountry')?.dirty || passportForm.get('regionCountry')?.touched)">
+      <div *ngIf="passportForm.get('regionCountry')?.errors?.['required']" style="color: brown;">Region/Country is required.</div>
+      <div *ngIf="passportForm.get('regionCountry')?.errors?.['pattern']" style="color: brown;">Region/Country should contain only characters.</div>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <label for="address" class="form-label fw-bold">2.8 Present Address<span class="required">*</span></label>
+  </td>
+</tr>
+<tr>
+  <td>
+    <input type="text" id="address" formControlName="address" class="form-control" required>
+    <div *ngIf="passportForm.get('address')?.errors && (passportForm.get('address')?.dirty || passportForm.get('address')?.touched)">
+      <div *ngIf="passportForm.get('address')?.errors?.['required']" style="color: brown;">Address is required.</div>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <label for="knownByOtherNames" class="form-label fw-bold">2.9 Have you ever been known by any other names (including religious) (If yes, please give details)</label>
+  </td>
+</tr>
+<tr>
+  <td>
+    <textarea id="knownByOtherNames" formControlName="knownByOtherNames" class="form-control"></textarea>
+  </td>
+</tr>
+<tr>
+  <td>
+    <label for="changedName" class="form-label fw-bold">2.10 Have you ever changed your name (If yes, please give details)</label>
+  </td>
+</tr>
+<tr>
+  <td>
+    <textarea id="changedName" formControlName="changedName" class="form-control"></textarea>
+  </td>
+</tr>
+<tr>
+  <td>
+    <label for="gender" class="form-label fw-bold">2.11 Gender <span class="required">*</span></label>
+  </td>
+</tr>
+<tr>
+  <td>
+    <select id="gender" formControlName="gender" class="form-select" required>
+      <option value="" disabled selected>Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+    <div *ngIf="passportForm.get('gender')?.errors && (passportForm.get('gender')?.dirty || passportForm.get('gender')?.touched)">
+      <div *ngIf="passportForm.get('gender')?.errors?.['required']" style="color: brown;">Gender is required.</div>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <label for="citizenship" class="form-label fw-bold">2.12 Citizenship/Nationality <span class="required">*</span></label>
+  </td>
+</tr>
+<tr>
+  <td>
+    <input type="text" id="citizenship" formControlName="citizenship" class="form-control" required pattern="^[a-zA-Z ]+$">
+    <div *ngIf="passportForm.get('citizenship')?.errors && (passportForm.get('citizenship')?.dirty || passportForm.get('citizenship')?.touched)">
+      <div *ngIf="passportForm.get('citizenship')?.errors?.['required']"style="color: brown;">Citizenship/Nationality is required.</div>
+      <div *ngIf="passportForm.get('citizenship')?.errors?.['pattern']" style="color: brown;">Citizenship/Nationality should contain only characters.</div>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <label for="maritalStatus" class="form-label fw-bold">2.13 Marital Status <span class="required">*</span></label>
+  </td>
+</tr>
+<tr>
+  <td>
+    <select id="maritalStatus" formControlName="maritalStatus" class="form-select" required>
+      <option value="" disabled selected>Select Marital Status</option>
+      <option value="single">Single</option>
+      <option value="married">Married</option>
+      <option value="divorced">Divorced</option>
+      <option value="widowed">Widowed</option>
+    </select>
+    <div *ngIf="passportForm.get('maritalStatus')?.errors && (passportForm.get('maritalStatus')?.dirty || passportForm.get('maritalStatus')?.touched)">
+      <div *ngIf="passportForm.get('maritalStatus')?.errors?.['required']" style="color: brown;">Marital Status is required.</div>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <label for="employmentType" class="form-label fw-bold">2.14 Employment Type <span class="required">*</span></label>
+  </td>
+</tr>
+<tr>
+  <td>
+    <select id="employmentType" formControlName="employmentType" class="form-select" required>
+      <option value="" disabled selected>Select Employment Type</option>
+      <option value="government">Government</option>
+      <option value="private">Private</option>
+      <option value="self-employed">Self-employed</option>
+      <option value="unemployed">Unemployed</option>
+    </select>
+    <div *ngIf="passportForm.get('employmentType')?.errors && (passportForm.get('employmentType')?.dirty || passportForm.get('employmentType')?.touched)">
+      <div *ngIf="passportForm.get('employmentType')?.errors?.['required']" style="color: brown;">Employment Type is required.</div>
+    </div>
+  </td>
+</tr>
+
+
+            </table>
+            <!--===========Module 3=================-->
+            <div id="applicantFormContainer" [formGroup]="applicantForm" >
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="fatherFirstName" class="p-3 fw-bold">3.1 Father's Given Name (Given Name means First name followed by Middle name (If any)) (Initials not allowed)<span class="required">*</span></label>
+                    <input type="text" class="form-control p-3" id="fatherFirstName" formControlName="fatherFirstName" placeholder="Enter father's given name">
+                    <div *ngIf="applicantForm.get('fatherFirstName')?.errors && (applicantForm.get('fatherFirstName')?.dirty || applicantForm.get('fatherFirstName')?.touched)">
+                      <div *ngIf="applicantForm.get('fatherFirstName')?.errors?.['required']" style="color: brown;">Father's Given Name is required.</div>
+                      <div *ngIf="applicantForm.get('fatherFirstName')?.errors?.['pattern']" style="color: brown;">Father's Given Name should contain only characters.</div>
+                    </div>
+                  </div>
+                  <!-- Remaining code goes here -->
+                  <div class="form-group">
+                    <label for="fatherSurname" class="p-3 fw-bold">Surname<span class="required">*</span></label>
+                    <input type="text" class="form-control p-3" id="fatherSurname" formControlName="fatherSurname" placeholder="Enter father's surname">
+                    <div *ngIf="applicantForm.get('fatherSurname')?.errors && (applicantForm.get('fatherSurname')?.dirty || applicantForm.get('fatherSurname')?.touched)">
+                      <div *ngIf="applicantForm.get('fatherSurname')?.errors?.['required']" style="color: brown;">Surname is required.</div>
+                      <div *ngIf="applicantForm.get('fatherSurname')?.errors?.['pattern']" style="color: brown;">Surname should contain only characters.</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="guardianFirstName" class="p-3 fw-bold">3.3 Legal Guardian's Given Name (If applicable) (Initials not allowed)</label>
+                    <input type="text" class="form-control p-3" id="guardianFirstName" formControlName="guardianFirstName" placeholder="Enter guardian's given name">
+                  </div>
+                  <div class="form-group">
+                    <label for="guardianSurname" class="p-3 fw-bold" >Surname</label>
+                    <input type="text" class="form-control p-3" id="guardianSurname" formControlName="guardianSurname" placeholder="Enter guardian's surname">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="motherFirstName" class="p-3 fw-bold">3.2 Mother's Given Name (Given Name means First name followed by Middle name (If any)) (Initials not allowed)<span class="required">*</span></label>
+                    <input type="text" class="form-control p-3" id="motherFirstName" formControlName="motherFirstName" placeholder="Enter mother's given name">
+                    <div *ngIf="applicantForm.get('motherFirstName')?.errors && (applicantForm.get('motherFirstName')?.dirty || applicantForm.get('motherFirstName')?.touched)">
+                      <div *ngIf="applicantForm.get('motherFirstName')?.errors?.['required']" style="color: brown;">Mother's Given Name is required.</div>
+                      <div *ngIf="applicantForm.get('motherFirstName')?.errors?.['pattern']" style="color: brown;">Mother's Given Name should contain only characters.</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="motherSurname" class="p-3 fw-bold">Surname<span class="required">*</span></label>
+                    <input type="text" class="form-control p-3" id="motherSurname" formControlName="motherSurname" placeholder="Enter mother's surname">
+                    <div *ngIf="applicantForm.get('motherSurname')?.errors && (applicantForm.get('motherSurname')?.dirty || applicantForm.get('motherSurname')?.touched)">
+                      <div *ngIf="applicantForm.get('motherSurname')?.errors?.['required']" style="color: brown;">Surname is required</div>
+                      </div>
+                      </div>
+                      
+                  <div class="form-group">
+                    <label for="spouseFirstName" class="p-3 fw-bold">3.4 Spouse's Given Name (Given Name means First name followed by Middle name (If any)) (Initials not allowed)</label>
+                    <input type="text" class="form-control p-3" id="spouseFirstName" formControlName="spouseFirstName" placeholder="Enter spouse's given name">
+                  </div>
+                  <div class="form-group">
+                    <label for="spouseSurname" class="p-3 fw-bold">Surname</label>
+                    <input type="text" class="form-control p-3" id="spouseSurname" formControlName="spouseSurname" placeholder="Enter spouse's surname">
+                  </div>
+                </div>
+              </div>
+              <h4 class="p-3 fw-bold">3.5 If applicant is minor, provide following details</h4>
+              <div class="form-group">
+                <label for="parentPassportDetails" class="p-3 fw-bold">Parent's Passport Details (If passport has been applied for but not received, give File Number)</label>
+              </div>
+              <div class="row">
+                <div class="">
+                  <div class="form-group">
+                    <label for="fatherFileNumber" class="p-3 fw-bold">Father/ Legal Guardian's File/ Passport Number</label>
+                    <input type="text" class="form-control p-3" id="fatherFileNumber" formControlName="fatherFileNumber" placeholder="Enter father's file/passport number">
+                  </div>
+                  <!-- Remaining code goes here -->
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="fatherFileNumber" class="p-3 fw-bold">Father/ Legal Guardian's File/ Passport Number</label>
+                        <input type="text" class="form-control p-3" id="fatherFileNumber" formControlName="fatherFileNumber" placeholder="Enter father's file/passport number">
+                      </div>
+                      <div class="form-group">
+                        <label for="fatherNationality" class="p-3 fw-bold">Father/ Legal Guardian's Nationality, if not Indian</label>
+                        <input type="text" class="form-control p-3" id="fatherNationality" formControlName="fatherNationality" placeholder="Enter father's nationality">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="motherFileNumber" class="p-3 fw-bold">Mother/ Legal Guardian's File/ Passport Number </label>
+                        <input type="text" class="form-control p-3" id="motherFileNumber" formControlName="motherFileNumber" placeholder="Enter mother's file/passport number">
+                      </div>
+                      <div class="form-group">
+                        <label for="motherNationality" class="p-3 fw-bold">Mother/ Legal Guardian's Nationality, if not Indian</label>
+                        <input type="text" class="form-control p-3" id="motherNationality" formControlName="motherNationality" placeholder="Enter mother's nationality">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td>
+                      <label for="givenName" class="form-label fw-bold">4. Residential Address Details<span class="required">*</span></label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 fw-bold"><label for="houseNoStreet">4.1 House No. and Street Name</label></td>
+                    <td class="p-3">
+                      <input type="text" class="form-control" id="houseNoStreet" placeholder="Enter house no. and street name" formControlName="houseNoStreet">
+                      <span class="error-message" *ngIf="applicantForm.get('houseNoStreet')?.errors && (applicantForm.get('houseNoStreet')?.dirty || applicantForm.get('houseNoStreet')?.touched)">
+                        <span *ngIf="applicantForm.get('houseNoStreet')?.errors?.['required']" style="color: brown;">House No. and Street Name is required.</span>
+                        <span *ngIf="applicantForm.get('houseNoStreet')?.errors?.['pattern']" style="color: brown;">Only characters and numbers are allowed.</span>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 fw-bold"><label for="villageTownCity">Village or Town or City</label></td>
+                    <td class="p-3">
+                      <input type="text" class="form-control" id="villageTownCity" placeholder="Enter village, town, or city" formControlName="villageTownCity">
+                      <span class="error-message" *ngIf="applicantForm.get('villageTownCity')?.errors && (applicantForm.get('villageTownCity')?.dirty || applicantForm.get('villageTownCity')?.touched)">
+                        <span *ngIf="applicantForm.get('villageTownCity')?.errors?.['required']" style="color: brown;">Village or Town or City is required.</span>
+                        <span *ngIf="applicantForm.get('villageTownCity')?.errors?.['pattern']" style="color: red;">Only characters are allowed.</span>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 fw-bold"><label for="district">District</label></td>
+                    <td class="p-3">
+                      <input type="text" class="form-control" id="district" placeholder="Enter district" formControlName="district">
+                      <span class="error-message" *ngIf="applicantForm.get('district')?.errors && (applicantForm.get('district')?.dirty || applicantForm.get('district')?.touched)">
+                        <span *ngIf="applicantForm.get('district')?.errors?.['required']" style="color: brown;">District is required.</span>
+                        <span *ngIf="applicantForm.get('district')?.errors?.['pattern']" style="color: brown;">Only characters are allowed.</span>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 fw-bold"><label for="policeStation">Police Station</label></td>
+                    <td class="p-3">
+                      <input type="text" class="form-control" id="policeStation" placeholder="Enter police station" formControlName="policeStation">
+                      <span class="error-message" *ngIf="applicantForm.get('policeStation')?.errors && (applicantForm.get('policeStation')?.dirty || applicantForm.get('policeStation')?.touched)">
+                        <span *ngIf="applicantForm.get('policeStation')?.errors?.['required']" style="color: brown;">Police Station is required.</span>
+                        <span *ngIf="applicantForm.get('policeStation')?.errors?.['pattern']" style="color: brown;">Only characters are allowed.</span>
+                      </span>
+                      </td>
+                      </tr>
+                  
+                      <tr>
+                        <td class="p-3 fw-bold"><label for="state">State/UT</label></td>
+                        <td class="p-3">
+                          <input type="text" class="form-control" id="state" placeholder="Enter state/UT" formControlName="state">
+                          <span class="error-message" *ngIf="applicantForm.get('state')?.errors && (applicantForm.get('state')?.dirty || applicantForm.get('state')?.touched)" style="color: brown;">
+                            <span *ngIf="applicantForm.get('state')?.errors?.['pattern']">Digits and special characters are not allowed.</span>
+                          </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="p-3 fw-bold"><label for="pin">PIN</label></td>
+                        <td class="p-3">
+                          <input type="text" class="form-control" id="pin" placeholder="Enter PIN" formControlName="pin">
+                          <span class="error-message" *ngIf="applicantForm.get('pin')?.errors && (applicantForm.get('pin')?.dirty || applicantForm.get('pin')?.touched)" style="color: brown;">
+                            <span *ngIf="applicantForm.get('pin')?.errors?.['pattern']">Digits are allowed only.</span>
+                          </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="p-3 fw-bold"><label for="mobileNumber">Mobile Number</label></td>
+                        <td class="p-3">
+                          <input type="text" class="form-control" id="mobileNumber" placeholder="Enter mobile number" formControlName="mobileNumber">
+                          <span class="error-message" *ngIf="applicantForm.get('mobileNumber')?.errors && (applicantForm.get('mobileNumber')?.dirty || applicantForm.get('mobileNumber')?.touched)" style="color: brown;">
+                            <span *ngIf="applicantForm.get('mobileNumber')?.errors?.['pattern']">Digits are allowed only.</span>
+                            <span *ngIf="applicantForm.get('mobileNumber')?.errors?.['minlength'] || applicantForm.get('mobileNumber')?.errors?.['maxlength']">10 digits number is allowed only.</span>
+                          </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="p-3 fw-bold"><label for="telephoneNumber">Telephone Number</label></td>
+                        <td class="p-3">
+                          <input type="text" class="form-control" id="telephoneNumber" placeholder="Enter telephone number" formControlName="telephoneNumber">
+                          <span class="error-message" *ngIf="applicantForm.get('telephoneNumber')?.errors && (applicantForm.get('telephoneNumber')?.dirty || applicantForm.get('telephoneNumber')?.touched)" style="color: brown;">
+                            <span *ngIf="applicantForm.get('telephoneNumber')?.errors?.['pattern']">Digits are allowed only.</span>
+                          </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="p-3 fw-bold"><label for="email">E-mail ID</label></td>
+                        <td class="p-3">
+                          <input type="email" class="form-control" id="email" placeholder="Enter email" formControlName="email">
+                          <span class="error-message" *ngIf="applicantForm.get('email')?.errors && (applicantForm.get('email')?.dirty || applicantForm.get('email')?.touched)" style="color: brown;">
+                            <span *ngIf="applicantForm.get('email')?.errors?.['email']">Please enter a valid email address.</span>
+                          </span>
+                        </td>
+                      </tr>
+                      
+                </tbody>
+              </table>
+
+             
+            </div>
+         
+            <button type="submit" class="btn btn-primary mb-5">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

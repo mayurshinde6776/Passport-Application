@@ -1,0 +1,12 @@
+
+<nav *ngIf="adminService.isAdminLoggedIn" class="navbar navbar-expand-lg navbar-light p-3" style="background-color: blueviolet;">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white fs-5" routerLink="">Admin Dashboard</a>
+      <!-- Admin-specific navigation items -->
+    
+      <form class="d-flex">
+        <button class="btn fs-5 text-white" style="background-color: blueviolet;" (click)="logout()">Logout</button>
+      </form>
+    </div>
+  </nav>
+  

@@ -1,0 +1,45 @@
+<body>
+  <section class="d-flex align-items-center my-5">
+    <div class="container text-center">
+      <h1 class="display-4" style="color: white;"></h1>
+
+      <div class="mt-4">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card" (click)="updateType('fresh passport')">
+              <img src="https://media.istockphoto.com/id/1389490989/photo/passenger-holding-indian-passport-on-the-airplane.jpg?s=612x612&w=0&k=20&c=0VdCckLBK_woVW6YpOYb717KLry2UGMIfGAPgI3AIsE=" class="card-img-top" alt="Fresh Passport Image">
+              <div class="card-body">
+                <h5 class="card-title btn btn-primary">Fresh Passport</h5>
+                <!-- Card content here -->
+              </div>
+            </div>
+          </div>
+        
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card" (click)="updateType('re-issue passport')">
+              <img src="https://media.istockphoto.com/id/962655846/photo/indian-passport.jpg?s=612x612&w=0&k=20&c=9QcoVhMHsOlgH5pAv9h1LpAa1XJhhUTaeQohRwvppQA=" class="card-img-top" alt="Re-issue Passport Image">
+              <div class="card-body">
+                <h5 class="card-title btn btn-primary">Re-issue Passport</h5>
+                <!-- Card content here -->
+              </div>
+            </div>
+          </div>
+        
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card" (click)="checkStatus()">
+              <img src="https://media.istockphoto.com/id/1147491676/photo/travel-concept-indian-passport-with-paper-airplane.jpg?s=612x612&w=0&k=20&c=jz4kyUGXtx8ub6P63zyrXFBIisSNGxkQS9BS5_xNdEk=" class="card-img-top" alt="Check Status Image">
+              <div class="card-body">
+                <h5 class="card-title btn btn-primary">Check Status</h5>
+                <!-- Card content here -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shadow p-2 my-5 bg-body rounded" *ngIf="userStatus">
+          <p class="text-info fs-3" style="color: black;">Status of your passport application is: <span class="text-danger">{{ userStatus }}</span> now.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>

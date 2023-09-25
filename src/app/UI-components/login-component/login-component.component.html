@@ -1,0 +1,29 @@
+<div class="container m-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 p-5" style="border: solid orange 1px;">
+      <form #loginForm="ngForm" (ngSubmit)="login()">
+        <div class="form-group">
+          <label for="username" style="color: blueviolet;">Username:</label>
+          <input type="text" class="form-control" id="username" name="username" [(ngModel)]="username" required
+            pattern="^[a-zA-Z]+$" minlength="1" maxlength="20" #usernameInput="ngModel">
+          <div class="text-danger" *ngIf="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)">
+            <div *ngIf="usernameInput.errors?.['required']">Username is required.</div>
+            <div *ngIf="usernameInput.errors?.['pattern']">Username should only contain letters.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" style="color: blueviolet;">Password:</label>
+          <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required
+             #passwordInput="ngModel">
+          <div class="text-danger" *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">
+            <div *ngIf="passwordInput.errors?.['required']">Password is required.</div>
+            
+          </div>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
