@@ -1,0 +1,75 @@
+<div class="container mt-5 mb-5">
+<section class="inner-page">
+  <div class="container">
+    <h2 class="d-flex justify-content-center align-items-center">Previous Passport Details</h2>
+    <div class="row">
+      <div class="col-md-12">
+        <h5 class="p-3">6.1 Details of latest held/existing/lost/damaged Ordinary Passport/Identity Certificate</h5>
+        <form [formGroup]="previousPassportForm" (ngSubmit)="submitForm()">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th scope="row">Passport/Identity Certificate Number</th>
+                <td>
+                  <input type="text" class="form-control p-3" formControlName="passportNumber" placeholder="Enter passport/identity certificate number">
+                  <span class="error-message" *ngIf="previousPassportForm.get('passportNumber')?.errors?.['required'] && (previousPassportForm.get('passportNumber')?.dirty || previousPassportForm.get('passportNumber')?.touched)" style="color: brown;">This field is required.</span>
+                  <span class="error-message" *ngIf="previousPassportForm.get('passportNumber')?.errors?.['pattern'] && (previousPassportForm.get('passportNumber')?.dirty || previousPassportForm.get('passportNumber')?.touched)" style="color: brown;">Only characters and numbers are allowed.</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Date of Issue (DD-MM-YYYY)</th>
+                <td>
+                  <input type="text" class="form-control p-3" formControlName="dateOfIssue" placeholder="Enter date of issue">
+                  <span class="error-message" *ngIf="previousPassportForm.get('dateOfIssue')?.errors?.['required'] && (previousPassportForm.get('dateOfIssue')?.dirty || previousPassportForm.get('dateOfIssue')?.touched)" style="color: brown;">This field is required.</span>
+                  <span class="error-message" *ngIf="previousPassportForm.get('dateOfIssue')?.errors?.['pattern'] && (previousPassportForm.get('dateOfIssue')?.dirty || previousPassportForm.get('dateOfIssue')?.touched)" style="color: brown;">Please provide a valid date in the format DD-MM-YYYY.</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Date of Expiry (DD-MM-YYYY)</th>
+                <td>
+                  <input type="text" class="form-control p-3" formControlName="dateOfExpiry" placeholder="Enter date of expiry">
+                  <span class="error-message" *ngIf="previousPassportForm.get('dateOfExpiry')?.errors?.['required'] && (previousPassportForm.get('dateOfExpiry')?.dirty || previousPassportForm.get('dateOfExpiry')?.touched)" style="color: brown;">This field is required.</span>
+                  <span class="error-message" *ngIf="previousPassportForm.get('dateOfExpiry')?.errors?.['pattern'] && (previousPassportForm.get('dateOfExpiry')?.dirty || previousPassportForm.get('dateOfExpiry')?.touched)" style="color: brown;">Please provide a valid date in the format DD-MM-YYYY.</span>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+          <p class="p-3">If you have held/hold any diplomatic/official passport, provide details in Column 6 of Supplementary Form.</p>
+<h5 class="p-3">6.2 Have you ever applied for passport, but not issued?</h5>
+<table class="table table-bordered">
+<tbody>
+  <tr>
+    <th scope="row">File Number</th>
+    <td>
+      <input type="text" class="form-control p-3" formControlName="fileNumber" placeholder="Enter file number">
+      <span class="error-message" *ngIf="previousPassportForm.get('fileNumber')?.errors?.['required'] && (previousPassportForm.get('fileNumber')?.dirty || previousPassportForm.get('fileNumber')?.touched)" style="color: brown;">This field is required.</span>
+      <span class="error-message" *ngIf="previousPassportForm.get('fileNumber')?.errors?.['pattern'] && (previousPassportForm.get('fileNumber')?.dirty || previousPassportForm.get('fileNumber')?.touched)" style="color: brown;">Special characters are not allowed.</span>
+    </td>
+  </tr>
+  
+<tr>
+  <th scope="row">Month and Year of applying</th>
+  <td>
+    <input type="text" class="form-control p-3" formControlName="monthYearApplying" placeholder="Enter month and year of applying">
+    <span class="error-message" *ngIf="previousPassportForm.get('monthYearApplying')?.errors?.['required'] && (previousPassportForm.get('monthYearApplying')?.dirty || previousPassportForm.get('monthYearApplying')?.touched)" style="color: brown;">This field is required.</span>
+  </td>
+</tr>
+<tr>
+  <th scope="row">Name of passport office where applied</th>
+  <td>
+    <input type="text" class="form-control p-3" formControlName="passportOffice" placeholder="Enter name of passport office">
+    <span class="error-message" *ngIf="previousPassportForm.get('passportOffice')?.errors?.['required'] && (previousPassportForm.get('passportOffice')?.dirty || previousPassportForm.get('passportOffice')?.touched)" style="color: brown;">This field is required.</span>
+    <span class="error-message" *ngIf="previousPassportForm.get('passportOffice')?.errors?.['pattern'] && (previousPassportForm.get('passportOffice')?.dirty || previousPassportForm.get('passportOffice')?.touched)" style="color: brown;">Numbers and special characters are not allowed.</span>
+    </td>
+    </tr>
+    
+            </tbody>
+          </table>
+          <button type="submit" class="btn btn-primary mb-5">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</div>

@@ -1,0 +1,61 @@
+{
+  "users": [
+    {
+      "name": "mayur hiraji shinde",
+      "username": "mayur",
+      "password": "12345678",
+      "mobile": "7887560505",
+      "DOB": "2023-07-12",
+      "status": "New",
+      "image": "",
+      "type": "fresh-passport",
+      "userID": "",
+      "id": 1
+    }
+  ],
+  "freshpassport": [
+    {
+      "passportData": {
+        "givenName": "mayur",
+        "surname": "shinde",
+        "dateOfBirth": "18/03/1998",
+        "placeOfBirth": "",
+        "district": "ahmednagar",
+        "state": "Maharashtra",
+        "regionCountry": "India",
+        "address": "A/P Karve Nagar- 411052, pune, maharashtra, india",
+        "knownByOtherNames": "NA",
+        "changedName": "NA",
+        "gender": "male",
+        "citizenship": "indian",
+        "maritalStatus": "single",
+        "employmentType": "private"
+      },
+      "applicantData": {
+        "fatherFirstName": "mayur",
+        "fatherSurname": "shinde",
+        "motherFirstName": "H",
+        "motherSurname": "shinde",
+        "guardianFirstName": "mayur",
+        "guardianSurname": "shinde",
+        "spouseFirstName": "mayur",
+        "spouseSurname": "shinde",
+        "fatherFileNumber": "",
+        "fatherNationality": "",
+        "motherFileNumber": "",
+        "motherNationality": "",
+        "houseNoStreet": "pune",
+        "villageTownCity": "pune",
+        "district": "ahmednagar",
+        "policeStation": "pune",
+        "state": "Maharashtra",
+        "pin": "6776",
+        "mobileNumber": "7887560505",
+        "telephoneNumber": "7887560505",
+        "email": "mayurshinde6776@gmail.com"
+      },
+      "id": 1
+    }
+  ],
+  "re-issue-passport": []
+}

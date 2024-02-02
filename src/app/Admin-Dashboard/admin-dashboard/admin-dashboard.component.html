@@ -1,0 +1,137 @@
+<div class="container">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Sr. No</th>
+          <th>Name</th>
+          <th>Username</th>
+          <!-- <th>Password</th> -->
+          <th>Phone</th>
+          <th>Date of Birth</th>
+          <th>Appying For</th>
+          <th>Status</th>
+          <th>Edit</th>
+          <th>Delete</th>
+          <th>Form-Details</th> <!-- Added column header -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>
+            <input type="text" [(ngModel)]="user.name" [disabled]="!user.editMode" class="form-control">
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="user.username" [disabled]="!user.editMode" class="form-control">
+          </td>
+          <!-- <td>
+            <input type="text" [(ngModel)]="user.password" [disabled]="!user.editMode" class="form-control">
+          </td> -->
+          <td>
+            <input type="text" [(ngModel)]="user.mobile" [disabled]="!user.editMode" class="form-control">
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="user.DOB" [disabled]="!user.editMode" class="form-control">
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="user.type" [disabled]="!user.editMode" class="form-control">
+          </td>
+          <td>
+            <select [(ngModel)]="user.status" [disabled]="!user.editMode" class="form-control" (ngModelChange)="updateStatus(user)">
+              <option value="new" [selected]="user.status === 'new'">New</option>
+              <option value="inprogress" [selected]="user.status === 'inprogress'">In Progress</option>
+              <option value="done" [selected]="user.status === 'done'">Done</option>
+            </select>
+          </td>
+          
+          
+          <td>
+            <button class="btn btn-sm btn-success" (click)="editUser(user)" [hidden]="user.editMode || user._editModeOnInit">Edit</button>
+            <div [hidden]="!user.editMode">
+              <button class="btn btn-sm btn-primary" (click)="saveUser(user)">Save</button>
+              <button class="btn btn-sm btn-secondary" (click)="cancelEdit(user)">Cancel</button>
+            </div>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-danger" (click)="deleteUser(user)">Delete</button>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-info" (click)="viewFormDetails(user)">Details</button> <!-- Added button for form details -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Existing table code -->
+
+
+
+<!-- Display Form Details -->
+
+<!-- <div *ngIf="selectedUser" class="container my-4  p-3 mb-5 w-75 justify-content-center " style="border: 1px solid blueviolet;">
+  <h3 class="text-center shadow-sm p-3 mb-5 bg-body rounded" style="color: blueviolet;">Form Details for {{ selectedUser.name }}</h3>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="selectedUser.passportDetails">
+          <tr *ngFor="let field of selectedUser.passportDetails.passportData | keyvalue">
+            <td class="field-column">{{ field.key }}</td>
+            <td class="value-column">{{ field.value }}</td>
+          </tr>
+          <tr *ngFor="let field of selectedUser.passportDetails.applicantData | keyvalue">
+            <td class="field-column">{{ field.key }}</td>
+            <td class="value-column">{{ field.value }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <button class="btn btn-secondary" (click)="closeFormDetails()">Close</button>
+</div> -->
+<!--===========================-->
+
+<div *ngIf="selectedUser" class="container my-4 p-3 mb-5 w-75 justify-content-center" style="border: 1px solid blueviolet;">
+  <h3 class="text-center shadow-sm p-3 mb-5 bg-body rounded" style="color: blueviolet;">Form Details for {{ selectedUser.name }}</h3>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="selectedUser.passportDetails">
+          <ng-container *ngIf="selectedUser.type === 'fresh-passport'">
+            <tr *ngFor="let field of selectedUser.passportDetails.passportData | keyvalue">
+             <!-- {{field}} -->
+              <td class="field-column">{{ field.key }}</td>
+              <td class="value-column">{{ field.value }}</td>
+            </tr>
+            <tr *ngFor="let field of selectedUser.passportDetails.applicantData | keyvalue">
+              <td class="field-column">{{ field.key }}</td>
+              <td class="value-column">{{ field.value }}</td>
+            </tr>
+          </ng-container>
+
+          <ng-container *ngIf="selectedUser.type === 're-issue passport'">
+            <tr *ngFor="let field of selectedUser.passportDetails | keyvalue">
+              <td class="field-column">{{ field.key }}</td>
+              <td class="value-column">{{ field.value }}</td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <button class="btn btn-secondary" (click)="closeFormDetails()">Close</button>
+</div>

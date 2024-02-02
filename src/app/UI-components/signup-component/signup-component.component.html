@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row justify-content-center shadow p-3 mb-5 bg-body rounded">
+    <div class="col-lg-6 col-md-8 col-sm-10 m-5">
+      <form (ngSubmit)="submitForm()" #signupForm="ngForm">
+        <div class="form-group">
+          <label for="name" style="color: rgb(146, 102, 218);">Name:</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your name" [(ngModel)]="formData.name" name="name" required
+            pattern="^[a-zA-Z\s]+$" #nameInput="ngModel">
+          <div class="alert alert-danger" *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)">
+            <div *ngIf="nameInput.errors?.['required']">Name is required.</div>
+            <div *ngIf="nameInput.errors?.['pattern']">Name can only contain letters.</div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="username" style="color: rgb(146, 102, 218);">Username:</label>
+          <input type="text" class="form-control" [(ngModel)]="formData.username" name="username" id="username" placeholder="Enter a username" required #usernameInput="ngModel">
+          <div class="alert alert-danger" *ngIf="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)">
+            <div *ngIf="usernameInput.errors?.['required']">Username is required.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" style="color: rgb(146, 102, 218);">Password:</label>
+          <input type="password" class="form-control" [(ngModel)]="formData.password" name="password" id="password" placeholder="Enter a password"
+            required minlength="8" #passwordInput="ngModel">
+          <div class="alert alert-danger" *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">
+            <div *ngIf="passwordInput.errors?.['required']">Password is required.</div>
+            <div *ngIf="passwordInput.errors?.['minlength']">Password must be at least 8 characters long.</div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="mobile" style="color: rgb(146, 102, 218);">Phone:</label>
+          <input type="tel" class="form-control" [(ngModel)]="formData.mobile" name="mobile" id="mobile" placeholder="Enter your mobile number"
+            required pattern="[789]\d{9}" #mobileInput="ngModel">
+          <div class="alert alert-danger" *ngIf="mobileInput.invalid && (mobileInput.dirty || mobileInput.touched)">
+            <div *ngIf="mobileInput.errors?.['required']">Mobile number is required.</div>
+            <div *ngIf="mobileInput.errors?.['pattern']">Invalid phone number. Please enter a 10-digit number starting with 7, 8, or 9.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="applyFor" style="color: rgb(146, 102, 218);">Apply For:</label>
+          <select class="form-control" [(ngModel)]="formData.type" name="type" id="applyFor" required>
+            <option value="fresh-passport">Fresh Passport</option>
+            <option value="re-issue passport">Reissue Passport</option>
+          </select>
+          <!-- <div class="alert alert-danger" *ngIf="typeInput.invalid && (typeInput.dirty || typeInput.touched)">
+            <div *ngIf="typeInput.errors?.['required']">Apply For is required.</div>
+          </div> -->
+        </div>
+        
+        <div class="form-group">
+          <label for="dob" style="color: rgb(146, 102, 218);">Date of Birth:</label>
+          <input type="date" class="form-control" [(ngModel)]="formData.DOB" name="dob" id="dob" required #dobInput="ngModel"
+                 [max]="getCurrentDate()">
+          <div class="alert alert-danger" *ngIf="dobInput.invalid && (dobInput.dirty || dobInput.touched)">
+            <div *ngIf="dobInput.errors?.['required']">Date of Birth is required.</div>
+          </div>
+        </div>
+        
+
+        <button type="submit" class="btn btn-primary justify-content-center" [disabled]="!signupForm.form.valid">Sign Up</button>
+      </form>
+      <div *ngIf="formErrors.length > 0" class="alert alert-danger">
+        <ul>
+          <li *ngFor="let error of formErrors">{{ error }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
